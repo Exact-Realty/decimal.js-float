@@ -19,12 +19,11 @@ import { Decimal as Decimal$class } from './Decimal';
 // 'Call constructor on TypeScript class without new' on StackOverflow:
 // https://stackoverflow.com/questions/32807163/call-constructor-on-typescript-class-without-new
 // -- retrieved 2020-10-29
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function bindNew<C extends { new (...args: A): T }, A extends any[], T>(
+function bindNew<C extends { new (...args: A): T }, A extends unknown[], T>(
 	Class: C & { new (...args: A): T },
 ): C & ((...args: A) => T) {
 	return new Proxy(Class, {
-		apply: (t, _, a) => new t(...a),
+		apply: (t, _, a: A) => new t(...a),
 	}) as C & ((...args: A) => T);
 }
 

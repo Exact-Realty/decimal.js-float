@@ -28,7 +28,7 @@ module.exports = (grunt) => {
 					browserifyOptions: {
 						node: true,
 						debug: true,
-						standalone: 'svgcut',
+						standalone: 'decimal.js-float',
 					},
 				},
 			},
